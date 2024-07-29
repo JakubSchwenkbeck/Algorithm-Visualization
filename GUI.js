@@ -16,7 +16,7 @@ let sorted = false;
 let drawing = true;
 let Highlight1 = -1;
 let Highlight2 = -1;
-
+let highlightALL = -1;
 
 
 function setup() {
@@ -39,7 +39,7 @@ function draw() {
   if (drawing) {
     // bool drawing controls if new drawings happen    
     background(220);
-    drawArray(array,Highlight1,Highlight2);
+    drawArray(array,Highlight1,Highlight2,highlightALL);
     
   }
 }
@@ -54,7 +54,9 @@ function generateRandomArray(){
 }
 
 
-
+function allHighlights(x){
+  highlightALL = x;
+}
 function setHighlights(high1,high2){
   Highlight1 = high1;
   Highlight2 = high2;
@@ -64,6 +66,8 @@ function setHighlights(high1,high2){
 function resetVisualization() {
   drawing = false; // Stop drawing
   generateRandomArray(); // Reset the array
+  allHighlights(-1); //reset highlights
+  setHighlights(-1,-1);
   redraw(); // Clear the canvas
   drawArray(array,-1,-1); // draw new Array 
 }
@@ -71,15 +75,23 @@ function resetVisualization() {
 
 // drawArray function accepts an array and two highlighted indices
 
-function drawArray(arr, highlightIndex1 = -1, highlightIndex2 = -1) {
+function drawArray(arr, highlightIndex1 = -1, highlightIndex2 = -1,highlightALL1 = -1) {
   clear();
+
+  print(highlightALL1);
   let w = width / arr.length;
   for (let i = 0; i < arr.length; i++) {
-    if (i === highlightIndex1 || i === highlightIndex2) {
-      fill(0, 0, 255); // Highlight color
-    } else {
-      fill(255);
-    }
+    if (highlightALL1 == -1){
+      
+      if (i === highlightIndex1 || i === highlightIndex2) {
+        fill(0, 0, 255); // Highlight color
+      } else {
+        fill(255);
+      }
+  }else{
+    
+    fill(50,250,50);
+  }
     rect(i * w, height - arr[i], w, arr[i]);
   
   }
@@ -120,6 +132,7 @@ function startVisualization() {
       break;
       
     case 'Binary Search':
+     
       BinarySearch(array, random(0, height));
       break;
   }
