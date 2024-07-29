@@ -60,7 +60,9 @@ async function InsertionSort(Array){
              await sleep(200); // Pause to visualize
 
  setHighlights(-1,pos+1);
+      
    }
+   allHighlights(5);
 
 }
 
@@ -96,6 +98,8 @@ async function QuickSort(arr, left = 0, right = arr.length - 1) {
         await QuickSort(arr, left, pivotIndex - 1);
         await QuickSort(arr, pivotIndex + 1, right);
     }
+  
+   allHighlights(5);
 }
 
 // Partition function
