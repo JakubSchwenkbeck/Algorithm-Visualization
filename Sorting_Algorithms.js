@@ -36,6 +36,7 @@ async function SelectionSort(Array){
      setHighlights(i,index);
       
   }
+  allhighlights(5);
 }
 
 
