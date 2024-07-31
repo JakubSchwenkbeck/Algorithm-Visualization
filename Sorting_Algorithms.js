@@ -100,7 +100,7 @@ async function QuickSort(arr, left = 0, right = arr.length - 1) {
         await QuickSort(arr, pivotIndex + 1, right);
     }
   
-   allHighlights(5);
+  // allHighlights(5);
 }
 
 // Partition function
