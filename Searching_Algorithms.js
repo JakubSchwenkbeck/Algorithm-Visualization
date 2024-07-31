@@ -7,7 +7,7 @@
 async function LinearSearch(arr, target) {
     for (let i = 0; i < arr.length; i++) {
         // Highlight the current element being checked
-        //setHighlights(target,i);
+        setHighlights(target,i);
         // Introduce a delay for visualization
         await sleep(100);
 
@@ -16,12 +16,13 @@ async function LinearSearch(arr, target) {
             
             return i ; // Return the index of the found element
         }
+      
     }
   //setHighlights(target,-1)
 
     // If not found, you can visualize this (optional)
    // drawArray(arr, -1); // No highlight for not found
-    return -1;//return -1; // Return -1 if the target is not found
+    return -2;//return -1; // Return -1 if the target is not found
 }
 
 
@@ -29,7 +30,6 @@ async function LinearSearch(arr, target) {
 
 //O(log(n))
 async function BinarySearch(arr, target) {
-   arr.sort();
   
  let left = 0;
  let right = array.length - 1;
@@ -40,7 +40,7 @@ async function BinarySearch(arr, target) {
     
  // Check if middle element is already the target
  if (array[mid] == target) {
-   allHighlights(5);
+   
    return mid;
    
  }
