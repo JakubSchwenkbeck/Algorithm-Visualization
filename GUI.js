@@ -128,12 +128,11 @@ function startVisualization() {
       break;
       
     case 'Linear Search':
-      LinearSearch(array, random(0, height));
+      LinearSearch(array, array[random(0,array.length)]);
       break;
       
     case 'Binary Search':
-     
-      BinarySearch(array, random(0, height));
+      BinarySearch(array, array[random(0,array.length)]);
       break;
   }
   redraw();
