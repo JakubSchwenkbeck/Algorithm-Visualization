@@ -36,7 +36,6 @@ async function SelectionSort(Array){
      setHighlights(i,index);
       
   }
-  allhighlights(5);
 }
 
 
@@ -100,7 +99,7 @@ async function QuickSort(arr, left = 0, right = arr.length - 1) {
         await QuickSort(arr, pivotIndex + 1, right);
     }
   
-  // allHighlights(5);
+   //allHighlights(5);
 }
 
 // Partition function
@@ -117,14 +116,14 @@ async function partition(arr, left, right) {
         }
         // Draw the current state of the array
          setHighlights(i,j)
-        await sleep(50); // Delay for visualization
+        await sleep(25); // Delay for visualization
     }
     // Swap the pivot element with the element at index i + 1
     [arr[i + 1], arr[right]] = [arr[right], arr[i + 1]];
     
     // Draw the final state after partitioning
    setHighlights(i+1,right)
-    await sleep(50); // Delay for visualization
+    await sleep(25); // Delay for visualization
 
     return i + 1; // Return the pivot index
 }
@@ -169,7 +168,7 @@ async function merge(arr, left, right) {
         k++;
 
         // Visualize the current state of the array after each merge step
-       setHighlights(k,-1);
+        setHighlights(i,k); // might use arr.slice() to show the current state
         await sleep(10); // Delay for visualization
     }
 
@@ -180,7 +179,7 @@ async function merge(arr, left, right) {
         k++;
         
         // Visualize the current state of the array after each addition
-       // setHighlights(i,k);
+        setHighlights(i,k); // might use arr.slice() to show the current state
         await sleep(10); // Delay for visualization
     }
 
@@ -191,7 +190,9 @@ async function merge(arr, left, right) {
         k++;
         
         // Visualize the current state of the array after each addition
-         //setHighlights(j,k);
+        setHighlights(j,k); // might use arr.slice() to show the current state
         await sleep(10); // Delay for visualization
     }
 }
+
+
