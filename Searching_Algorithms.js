@@ -1,59 +1,43 @@
-//* This file holds the Searching algorithms */
+/** This file holds the Searching algorithms */
 
-
-//* Linear search searches the Array step by step lineary */ 
-
+// Linear search algorithm
 // O(n)
 async function LinearSearch(arr, target) {
     for (let i = 0; i < arr.length; i++) {
-        // Highlight the current element being checked
-        setHighlights(target,i);
-        // Introduce a delay for visualization
+        setHighlights(target, i);
         await sleep(100);
 
         if (arr[i] === target) {
-            // Highlight the found element
-            
-            return i ; // Return the index of the found element
+            highlightAll(arr);
+            return i; // Return the index of the found element
         }
-      
     }
-  //setHighlights(target,-1)
-
-    // If not found, you can visualize this (optional)
-   // drawArray(arr, -1); // No highlight for not found
-    return -2;//return -1; // Return -1 if the target is not found
+    highlightAll(arr); // If not found, highlight all
+    return -1; // Return -1 if the target is not found
 }
 
-
-//* Binary Search splits the (sorted!!) array in half and than searches the half were value lies */
-
-//O(log(n))
+// Binary search algorithm (sorted array)
+// O(log(n))
 async function BinarySearch(arr, target) {
-  
- let left = 0;
- let right = array.length - 1;
-  
- while (left <= right) {
-   setHighlights(left,right);
- let mid = left + (right - left) / 2;
-    
- // Check if middle element is already the target
- if (array[mid] == target) {
-   
-   return mid;
-   
- }
-   
-   
-   await sleep(100);
- // if target is bigger, search on right side
- if (array[mid] < target) {
-   left = mid + 1;
- }
- // if target is smaller, search on left side
- else right = mid - 1;
- }
- // not found
- return -1;
+    let left = 0;
+    let right = arr.length - 1;
+
+    while (left <= right) {
+        const mid = Math.floor((left + right) / 2);
+        setHighlights(left, right);
+        await sleep(100);
+
+        if (arr[mid] === target) {
+            highlightAll(arr);
+            return mid;
+        }
+
+        if (arr[mid] < target) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+    highlightAll(arr); // If not found, highlight all
+    return -1;
 }
